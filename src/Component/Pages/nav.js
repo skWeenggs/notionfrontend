@@ -9,7 +9,7 @@ const Nav = () => {
   const [databaseId, setDatabaseId] = useState(null);
   const [domain,setDomain]=useState('')
   const [array,setArray]=useState([]);
-  console.log(array);
+
   // const domainDatabaseMap = [
   //   { domain: 'localhost', databaseId: '2ec2121978bc4fe4b0563f9feeb9ca56' },
   //   { domain: 'domain123.netlify.app', databaseId: '3aa619a29e924491929bfa5508adf40e' },
@@ -68,7 +68,7 @@ const Nav = () => {
 
   const callonce=async()=>{
     // const response=await axios.get(`http://localhost:4000/fetchuserdata/c3947bed600c49c39490e3d14ad199c0`)
-  
+
     // const response=await axios.get(`https://notion-api.splitbee.io/v1/table/${databaseId}`)
     // const response=await axios.get(`https://notion-api.splitbee.io/v1/table/${databaseId}`)
     const response=await axios.get(`https://vercel-notion.vercel.app/fetchuserdata/${databaseId}/${domain}`)
@@ -83,14 +83,14 @@ const Nav = () => {
 //  setArray(JSON.parse(users));
 
   useEffect(()=>{
-    if(array.length <=1  ){
+    if(array.length < 1  ){
       LoadData()
     }
 
   
   const head=sessionStorage.getItem("header")
     setHeader(JSON.parse(head));
-    console.log(header);
+ 
     const currentDomain = window.location.hostname;
 
     // const matchingDomain = domainDatabaseMap.find(mapping => mapping.domain === currentDomain);
@@ -112,7 +112,7 @@ const Nav = () => {
       setDatabaseId(matchingDomain.properties.PagesPageId.rich_text[0].plain_text);
       setDomain(matchingDomain.properties.Domain.rich_text[0].plain_text)
      }
-  
+     console.log(databaseId !==null && !header);
      if(databaseId !==null && !header){
        
        callonce()
