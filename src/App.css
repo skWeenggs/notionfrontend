@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.ag-header-group-cell-label, .ag-header-cell-label {
+    display: flex;
+    flex: 1 1 auto;
+    overflow: hidden;
+    align-items: center;
+    text-overflow: ellipsis;
+    align-self: stretch;
+    justify-content: center;
+}
